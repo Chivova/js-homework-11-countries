@@ -1,5 +1,6 @@
 import './styles.css';
-import countriesList from './templates/counries-list.hbs';
+import debounce from 'lodash.debounce';
+import countries from './templates/counries-list.hbs';
 
 const refs = {
   searchQuery: document.querySelector('.js-countries-search'),
@@ -8,11 +9,11 @@ const refs = {
 };
 const URL = 'https://restcountries.eu/rest/v2/';
 
-refs.searchQuery.addEventListener('input', onFocusSearch);
+refs.searchQuery.addEventListener('input', debounce(onSearch, 500));
 
-function onFocusSearch(e) {
-  const search = e.currentTarget.value;
-
+function onSearch(e) {
+  const search = e.target.value;
+  console.log(search);
   fetchCountries(search).then(renderCountriesList);
 }
 
@@ -21,6 +22,6 @@ function fetchCountries(search) {
 }
 
 function renderCountriesList(country) {
-  const markup = countriesList(country);
+  const markup = countries(country);
   refs.countriesList.innerHTML = markup;
 }

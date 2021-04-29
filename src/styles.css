@@ -33,3 +33,7 @@ body {
 }
 .country-container {
 }
+
+.country-info {
+  display: flex;
+}
