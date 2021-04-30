@@ -1,5 +1,6 @@
 import './styles.css';
 import debounce from 'lodash.debounce';
+import notification from './utils/notifications';
 import countries from './templates/counries-list.hbs';
 
 const refs = {
@@ -13,7 +14,11 @@ refs.searchQuery.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(e) {
   const search = e.target.value;
-  console.log(search);
+
+  if (search === '') {
+    refs.countriesList.innerHTML = '';
+  }
+
   fetchCountries(search).then(renderCountriesList);
 }
 
