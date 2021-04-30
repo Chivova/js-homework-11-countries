@@ -11,11 +11,11 @@
             <h2>Languages:</h2>
             <ul class="languages-list">
                 {{#each languages}}
-                <li class="languages-item" {{population.name}}></li>
+                <li class="languages-item">{{name}}</li>
                 {{/each}}
             </ul>
         </li>
     </ul>
-    <img class="country-img" src="{{flag}}" alt="country {{name}} flag">
+    <img class="country-img" src="{{flag}}" alt="country {{name}} flag" width="350px">
 </div>
 {{/each}}

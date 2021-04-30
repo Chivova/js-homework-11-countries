@@ -1,32 +1,18 @@
 import './styles.css';
 import debounce from 'lodash.debounce';
-import notification from './utils/notifications';
-import countries from './templates/counries-list.hbs';
-
-const refs = {
-  searchQuery: document.querySelector('.js-countries-search'),
-  countriesList: document.querySelector('.js-countries-list'),
-  counrtyContainer: document.querySelector('js-conutry-card'),
-};
-const URL = 'https://restcountries.eu/rest/v2/';
+import fetchCountries from './js/fetchCountries';
+import renderCountriesList from './js/markup/countries-markup';
+import refs from './js/markup/refs';
+import { toManyMatchesFound, infoNotify } from './utils/notifications';
 
 refs.searchQuery.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(e) {
   const search = e.target.value;
 
-  if (search === '') {
+  if (!search) {
     refs.countriesList.innerHTML = '';
   }
 
-  fetchCountries(search).then(renderCountriesList);
-}
-
-function fetchCountries(search) {
-  return fetch(`${URL}name/${search}`).then(response => response.json());
-}
-
-function renderCountriesList(country) {
-  const markup = countries(country);
-  refs.countriesList.innerHTML = markup;
+  fetchCountries(search).then(renderCountriesList).catch(infoNotify);
 }
