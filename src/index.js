@@ -11,9 +11,9 @@ function onSearch(e) {
   // const search = event.target.value.trim(); // убрать пробелы
   const search = e.target.value;
 
-  if (!search) {
-    refs.countriesList.innerHTML = '';
-  }
+  // if (!search) {
+  //   refs.countriesList.innerHTML = '';
+  // }
 
   fetchCountries(search).then(renderCountriesList).catch(infoNotify);
 }

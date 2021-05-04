@@ -15,9 +15,15 @@ export default function renderCountriesList(countries) {
     renderingMarkup(countryMarkup);
   } else {
     infoNotify();
+    renderingMarkup('');
+    resetSearchQuery();
   }
 }
 
 function renderingMarkup(data) {
   refs.countriesList.innerHTML = data;
+}
+
+function resetSearchQuery() {
+  refs.searchQuery.value = '';
 }
