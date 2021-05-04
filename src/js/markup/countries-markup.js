@@ -3,17 +3,21 @@ import allCountries from '../../templates/countries-list.hbs';
 import country from '../../templates/country.hbs';
 import { toManyMatchesFound, infoNotify } from '../../utils/notifications';
 
-export default function renderCountriesList(counties) {
-  if (counties.length >= 10) {
+export default function renderCountriesList(countries) {
+  if (countries.length >= 10) {
     toManyMatchesFound();
     return;
-  } else if (counties.length > 2 && counties.length < 10) {
-    const markup = allCountries(counties);
-    refs.countriesList.innerHTML = markup;
-  } else if (counties.length === 1) {
-    const countryMarkup = country(counties);
-    refs.countriesList.innerHTML = countryMarkup;
+  } else if (countries.length >= 2 && countries.length < 10) {
+    const markup = allCountries(countries);
+    renderingMarkup(markup);
+  } else if (countries.length === 1) {
+    const countryMarkup = country(countries);
+    renderingMarkup(countryMarkup);
   } else {
     infoNotify();
   }
+}
+
+function renderingMarkup(data) {
+  refs.countriesList.innerHTML = data;
 }

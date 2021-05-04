@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 import fetchCountries from './js/fetchCountries';
 import renderCountriesList from './js/markup/countries-markup';
 import refs from './js/markup/refs';
-import { toManyMatchesFound, infoNotify } from './utils/notifications';
+import { infoNotify } from './utils/notifications';
 
 refs.searchQuery.addEventListener('input', debounce(onSearch, 500));
 

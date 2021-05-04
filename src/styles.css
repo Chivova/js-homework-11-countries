@@ -14,11 +14,16 @@ body {
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
-.country-wrapper {
+ul {
+  list-style: none;
+}
+
+.country {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
+
 .countries-input {
   width: 400px;
   height: 40px;
@@ -30,12 +35,29 @@ body {
   font-size: 25px;
 }
 
-.country-info {
+.countries-list {
+  margin-top: 20px;
+}
+
+.countries-item {
+  font-size: 20px;
+}
+
+.country-info-wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.country-info-title {
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 2px solid teal;
 }
 
 .country-info-list {
   margin-right: 20px;
+}
+
+.item-text {
+  margin-top: 0;
 }
