@@ -8,6 +8,7 @@ import { infoNotify } from './utils/notifications';
 refs.searchQuery.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(e) {
+  // const search = event.target.value.trim(); // убрать пробелы
   const search = e.target.value;
 
   if (!search) {
